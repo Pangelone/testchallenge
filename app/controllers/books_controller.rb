@@ -19,6 +19,7 @@ class BooksController < ApplicationController
 
     Reservation.transaction do
       @book.lock!
+      # Status guard for reserved/checked_out books
       if @book.reserved? || @book.checked_out?
         render json: { error: 'Book is not available' }, status: :unprocessable_entity
         raise ActiveRecord::Rollback
