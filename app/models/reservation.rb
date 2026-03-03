@@ -1,5 +1,5 @@
 class Reservation < ApplicationRecord
-    belongs_to :book
+  belongs_to :book
 
-    validates :email, presence: true
+  validates :email, presence: true
 end
